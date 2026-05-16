@@ -1,0 +1,37 @@
+import sys
+
+def solve():
+    input = sys.stdin.read
+    data = input().split()
+    
+    if not data:
+        return
+
+    t = int(data[0])
+    idx = 1
+    
+    out = []
+    for _ in range(t):
+        n = int(data[idx])
+        # Extract the array for the current testcase
+        a = [int(x) for x in data[idx + 1 : idx + 1 + n]]
+        idx += 1 + n
+        
+        # Determine the common majority element using the first 3 elements
+        if a[0] == a[1]:
+            common = a[0]
+        elif a[0] == a[2]:
+            common = a[0]
+        else:
+            common = a[1]
+            
+        # Find the index of the "spy" (1-based index)
+        for i in range(n):
+            if a[i] != common:
+                out.append(str(i + 1))
+                break
+                
+    print('\n'.join(out))
+
+if __name__ == '__main__':
+    solve()
