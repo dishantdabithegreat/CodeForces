@@ -1,0 +1,30 @@
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t = int(input_data[0])
+    pointer = 1
+    output = []
+    
+    for _ in range(t):
+        a = int(input_data[pointer])
+        b = int(input_data[pointer + 1])
+        c = int(input_data[pointer + 2])
+        d = int(input_data[pointer + 3])
+        pointer += 4
+        
+        # Count how many runners have a distance strictly greater than a
+        count = 0
+        if b > a: count += 1
+        if c > a: count += 1
+        if d > a: count += 1
+        
+        output.append(str(count))
+            
+    print('\n'.join(output))
+
+if __name__ == '__main__':
+    solve()
